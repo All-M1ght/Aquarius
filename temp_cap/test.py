@@ -16,9 +16,9 @@ headers = {
             'Expect': '100-continue',
             'User-Agent': 'ben',
             'Content - Type':'application / x - www - form - urlencoded;charset = UTF - 8',
-            'appCode': '0C55ECFA560A70068F15D9FAEF1C6573',
-            'appKey': 'AKID8cc1c12ff10d4a280416bfbbda59e6d0',
-            'appSecret': '931573d3c0ad8485735d825d25887e56'
+            'appCode': '3',
+            'appKey': '3',
+            'appSecret': '3'
         }
 params = {
             'v_pic': base64_data,
