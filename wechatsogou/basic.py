@@ -84,10 +84,14 @@ class WechatSogouBasic(WechatSogouBase):
                 cookie_jar.set_cookie(cookielib.Cookie(version=0, name=cookie['name'], value=cookie['value'], port=None, port_specified=False, domain=cookie['domain'], domain_specified=False, domain_initial_dot=False, path=cookie['path'], path_specified=True, secure=cookie['secure'], expires=None, discard=True, comment=None, comment_url=None, rest={'HttpOnly': None}, rfc2109=False))  
             self._session.cookies.update(cookie_jar)
         
-        self.dama_name = config.dama_name
-        self.dama_pswd = config.dama_pswd
-        if self.dama_name != '' and self.dama_pswd != '':
-           self._ocr = RClient(self.dama_name, self.dama_pswd, '70021', 'dcefe229cb9b4e1785b48fbc3525d011')
+        # self.dama_name = config.dama_name
+        # self.dama_pswd = config.dama_pswd
+        self.appCode = config.appCode
+        self.appKey = config.appKey
+        self.appSecret = config.appSecret
+        self.v_type = config.v_type
+        if self.appCode != '' and self.appKey != '' and self.appSecret != '' and self.v_type != '':
+           self._ocr = RClient(self.appCode, self.appKey, self.appSecret, self.v_type)
 
         self._agent = [
             "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0",

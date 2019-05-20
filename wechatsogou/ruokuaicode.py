@@ -12,22 +12,26 @@ import datetime
 
 class RClient(WechatSogouBase):
 
-    def __init__(self, username, password, soft_id, soft_key):
-        self.username = username
-        self.password = md5(password.encode('utf-8')).hexdigest()
-        self.soft_id = soft_id
-        self.soft_key = soft_key
-        self.base_params = {
-            'username': self.username,
-            'password': self.password,
-            'softid': self.soft_id,
-            'softkey': self.soft_key,
-        }
-        self.headers = {
-            'Connection': 'Keep-Alive',
-            'Expect': '100-continue',
-            'User-Agent': 'ben',
-        }
+    def __init__(self, appCode, appKey, appSecret, v_type):
+        self.appCode = appCode
+        self.appKey = appKey
+        self.appSecret = appSecret
+        self.v_type = v_type
+        # self.username = username
+        # self.password = md5(password.encode('utf-8')).hexdigest()
+        # self.soft_id = soft_id
+        # self.soft_key = soft_key
+        # self.base_params = {
+        #     'username': self.username,
+        #     'password': self.password,
+        #     'softid': self.soft_id,
+        #     'softkey': self.soft_key,
+        # }
+        # self.headers = {
+        #     'Connection': 'Keep-Alive',
+        #     'Expect': '100-continue',
+        #     'User-Agent': 'ben',
+        # }
 
     def create(self, im, im_type, timeout=60):
         """
@@ -62,13 +66,13 @@ class RClient(WechatSogouBase):
             'Expect': '100-continue',
             'User-Agent': 'ben',
             'Content - Type': 'application / x - www - form - urlencoded;charset = UTF - 8',
-            'appCode': 'your',
-            'appKey': 'your',
-            'appSecret': 'your'
+            'appCode': self.appCode,
+            'appKey': self.appKey,
+            'appSecret': self.appSecret
         }
         params = {
             'v_pic': base64_data,
-            'v_type': 'ne6'
+            'v_type': self.v_type
         }
         r = requests.post('http://apigateway.jianjiaoshuju.com/api/v_1/fzyzm.html', data=params, headers=headers)
         return r.json()
